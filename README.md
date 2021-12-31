@@ -8,4 +8,9 @@ This repository contains the code that monitors the online status changes in Wha
 3. Paste the contents of `whatstalk.js` in the Developer Tools > Console.
 4. Wait for results. Every 8 hours a CSV will be downloaded
 
-*Note*: You can trigger the CSV download, by typing into the console `toCsv()` 
+*Note*: You can trigger the CSV download, by typing into the console `toCsv()`
+
+## To-do
+
+- Add telegram notifications
+- Use an automation framework like *pupetteer* to automate tasks
