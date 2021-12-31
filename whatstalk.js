@@ -10,25 +10,28 @@ function getProfileHeaderElem() {
   }
 }
 
-function mutationCallback() {
+function mutationCallback(muts) {
+  const contact = muts[0].target.innerText;
   const timestamp = new Date().toLocaleString();
-  console.log(`User went online on [${timestamp}]`);
-  logs.push(timestamp);
+  const date = timestamp.split(', ')[0];
+  const time = timestamp.split(', ')[1];
+  console.log(`User [${contact}] went online on [${timestamp}].`);
+  console.log(`Mutations,`, muts);
+  logs.push({ contact, date, time });
 }
 
 
-function main() {
+function main(observer) {
   console.log(`Init script.`);
-  const observer = new MutationObserver(mutationCallback);
   const config = { attributes: true, childList: true, subtree: true };
   observer.observe(getProfileHeaderElem(), config);
   console.log(`Observing...`);
 }
 
 function toCsv() {
-  let csv = 'index,timestamp\n';
+  let csv = 'index,user,date,time\n';
   logs.forEach((log, index) => {
-    csv += `${index},${log}\n`;
+    csv += `${index},"${log.contact}","${log.date}","${log.time}"\n`;
   });
   console.log(csv);
   let hiddenElement = document.createElement('a');
@@ -38,4 +41,6 @@ function toCsv() {
   hiddenElement.click();
 }
 
-main();
+
+const observer = new MutationObserver(mutationCallback);
+main(observer);
