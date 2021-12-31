@@ -1,4 +1,5 @@
 const HEADER_CLASS = '_23P3O';
+const EIGHT_HOURS = 28800000;
 const logs = [];
 
 function getProfileHeaderElem() {
@@ -11,21 +12,15 @@ function getProfileHeaderElem() {
 }
 
 function mutationCallback(muts) {
+  if (!muts.addedNodes) return;
   const contact = muts[0].target.innerText;
   const timestamp = new Date().toLocaleString();
   const date = timestamp.split(', ')[0];
   const time = timestamp.split(', ')[1];
   console.log(`User [${contact}] went online on [${timestamp}].`);
   console.log(`Mutations,`, muts);
-  logs.push({ contact, date, time });
-}
-
-
-function main(observer) {
-  console.log(`Init script.`);
-  const config = { attributes: true, childList: true, subtree: true };
-  observer.observe(getProfileHeaderElem(), config);
-  console.log(`Observing...`);
+  const data = { contact, date, time };
+  logs.push(data);
 }
 
 function toCsv() {
@@ -41,6 +36,20 @@ function toCsv() {
   hiddenElement.click();
 }
 
+function downloadCsv() {
+  setTimeout(() => {
+    toCsv();
+    downloadCsv();
+  }, EIGHT_HOURS);
+}
 
-const observer = new MutationObserver(mutationCallback);
+function main(observer) {
+  console.log(`Init script.`);
+  const config = { attributes: true, childList: true, subtree: true };
+  observer.observe(getProfileHeaderElem(), config);
+  console.log(`Observing...`);
+  downloadCsv()
+}
+
+let observer = new MutationObserver(mutationCallback);
 main(observer);
