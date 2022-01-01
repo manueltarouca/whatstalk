@@ -17,8 +17,10 @@ function mutationCallback(muts) {
   const timestamp = new Date().toLocaleString();
   const date = timestamp.split(', ')[0];
   const time = timestamp.split(', ')[1];
-  console.log(`User [${contact}] went online on [${timestamp}].`);
+  const msg = `User [${contact}] went online on [${timestamp}].`
+  console.log(msg);
   console.log(`Mutations,`, muts);
+  const greeting = new Notification(msg);
   const data = { contact, date, time };
   logs.push(data);
 }
