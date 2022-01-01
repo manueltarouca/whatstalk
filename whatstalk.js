@@ -12,7 +12,7 @@ function getProfileHeaderElem() {
 }
 
 function mutationCallback(muts) {
-  if (!muts.addedNodes) return;
+  if (muts[0].addedNodes.length < 1) return;
   const contact = muts[0].target.innerText;
   const timestamp = new Date().toLocaleString();
   const date = timestamp.split(', ')[0];
@@ -51,5 +51,5 @@ function main(observer) {
   downloadCsv()
 }
 
-let observer = new MutationObserver(mutationCallback);
+const observer = new MutationObserver(mutationCallback);
 main(observer);
