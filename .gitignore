@@ -1,2 +1,4 @@
 .env
 telegram.js
+logs.csv
+web-ext-artifacts

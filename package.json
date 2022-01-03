@@ -1,0 +1,21 @@
+{
+  "name": "whatstalk",
+  "version": "1.0.0",
+  "description": "This repository contains the code that monitors the online status changes in WhatsApp and generates a CSV report.",
+  "main": "whatstalk.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "web-ext build --overwrite-dest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manueltarouca/whatstalk.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manueltarouca/whatstalk/issues"
+  },
+  "homepage": "https://github.com/manueltarouca/whatstalk#readme"
+}

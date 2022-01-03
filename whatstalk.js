@@ -13,7 +13,7 @@ function getProfileHeaderElem() {
 
 function mutationCallback(muts) {
   if (muts[0].addedNodes.length < 1) return;
-  const contact = muts[0].target.innerText;
+  const contact = muts[0].target.innerText.trim();
   const timestamp = new Date().toLocaleString();
   const date = timestamp.split(', ')[0];
   const time = timestamp.split(', ')[1];

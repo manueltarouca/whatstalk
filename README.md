@@ -10,6 +10,10 @@ This repository contains the code that monitors the online status changes in Wha
 
 *Note*: You can trigger the CSV download, by typing into the console `toCsv()`
 
+## Doing
+
+- Browser extension
+
 ## To-do
 
 - Add telegram notifications
